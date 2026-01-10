@@ -1,49 +1,104 @@
-// bai tap
 const Input = () => {
+  // Khoi tao
   const [value, setValue] = React.useState("");
   const [items, setItem] = React.useState([]);
-  const [error, setError] = React.useState("");
+  const [mes, setMes] = React.useState("");
+
+  // Chan form
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+  // tao ra the
   const handleChangeValue = (e) => {
     setValue(e.target.value);
-    if (error) setError("");
   };
 
   const handleClick = () => {
     const trimmedValue = value.trim();
 
     if (!trimmedValue) {
-      setError("Task không được để trống!");
+      setMes("Không được để trống");
       return;
     }
+    // Bao loi khi gap trung lap
+    // Ham some tim kiem trung lap vd [1,2,3].some(n => n>2) =>true
     const isDuplicate = items.some(
-      (item) => item.text.toLowerCase() === trimmedValue.toLowerCase()
+      (item) => item.text.toLowerCase() === trimmedValue.toLocaleLowerCase()
     );
 
     if (isDuplicate) {
-      setError("Task này đã tồn tại!");
+      setMes("Task này đã tồn tại");
       return;
     }
-    setItem([
-      ...items,
-      { text: trimmedValue, isEditing: false, editValue: trimmedValue },
-    ]);
+
+    setItem([...items, { text: trimmedValue, isEditing: false }]);
+    setMes("");
     setValue("");
-    setError("");
+  };
+  // Sua the(chuyen doi false -> true cho phep mo the)
+  const handleEdit = (index) => {
+    setItem(
+      items.map((item, i) =>
+        i === index ? { ...item, isEditing: true, editValue: item.text } : item
+      )
+    );
+  };
+  // Sua the input
+  const handleEditValue = (index, value) => {
+    setItem(
+      items.map((item, i) =>
+        i === index ? { ...item, editValue: value } : item
+      )
+    );
+  };
+  // Sua the thanh cong
+
+  const handleEditSuccess = (index) => {
+    // khong duoc de input trong
+
+    const trimmed = items[index].editValue.trim();
+
+    if (!trimmed) {
+      setItem(
+        items.map((item, i) =>
+          i === index
+            ? { ...item, editError: "Không được để trống ô này" }
+            : item
+        )
+      );
+      return;
+    }
+
+    // the bi chung
+    const isDuplicate = items.some(
+      (item, i) =>
+        i !== index && item.text.toLowerCase() === trimmed.toLowerCase()
+    );
+
+    if (isDuplicate) {
+      setItem(
+        items.map((item, i) =>
+          i === index ? { ...item, editError: "Task này đã tồn tại" } : item
+        )
+      );
+      return;
+    }
+    setItem(
+      items.map((item, i) =>
+        i === index
+          ? { ...item, isEditing: false, text: item.editValue, editError: "" }
+          : item
+      )
+    );
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  };
-
-  // xoa the
+  // Xoa the
   const handleDelete = (_index) => {
-    const isConfirm = window.confirm("Bạn có chắc muốn xóa task này không?");
+    const isConfirm = window.confirm("Bạn có chắc muốn xóa thẻ này?");
 
     if (!isConfirm) return;
     setItem(items.filter((_, index) => index !== _index));
   };
-  // Sua the
-
   return (
     <>
       <form
@@ -64,9 +119,7 @@ const Input = () => {
           Add Task
         </button>
       </form>
-      {error && (
-        <p className="text-red-400 text-sm text-center mb-2">{error}</p>
-      )}
+      {mes && <p className="text-red-400 text-sm text-center mb-2">{mes}</p>}
       <ul className="list w-[85%] mx-auto">
         {items.map((item, index) => (
           <li key={index} className="pb-2">
@@ -74,67 +127,41 @@ const Input = () => {
               <div className="flex justify-between p-[8px] bg-violet-700 rounded-[5px]">
                 <p className="text-white text-[1rem]">{item.text}</p>
                 <span>
-                  <button
-                    onClick={() => {
-                      const newItems = [...items];
-                      newItems[index].isEditing = true;
-                      newItems[index].editValue = newItems[index].text;
-                      setItem(newItems);
-                    }}
-                  >
-                    <i className="fa-regular fa-pen-to-square text-white"></i>
+                  <button>
+                    {/* Sua the */}
+                    <i
+                      className="fa-regular fa-pen-to-square text-white"
+                      onClick={() => handleEdit(index)}
+                    ></i>
                   </button>
                   <button onClick={() => handleDelete(index)}>
                     <i className="fa-solid fa-trash text-white"></i>
                   </button>
                 </span>
               </div>
-
               {item.isEditing && (
                 <form
-                  onSubmit={(e) => {
-                    e.preventDefault();
-
-                    const trimmed = item.editValue.trim();
-                    if (!trimmed) {
-                      alert("Task không được để trống!");
-                      return;
-                    }
-
-                    const isDuplicate = items.some(
-                      (t, i) =>
-                        i !== index &&
-                        t.text.toLowerCase() === trimmed.toLowerCase()
-                    );
-
-                    if (isDuplicate) {
-                      alert("Task này đã tồn tại!");
-                      return;
-                    }
-
-                    const newItems = [...items];
-                    newItems[index].text = trimmed;
-                    newItems[index].isEditing = false;
-                    setItem(newItems);
-                  }}
+                  onSubmit={handleSubmit}
                   className="absolute inset-0 flex border border-violet-700 bg-[#1a1a40]"
                 >
                   <input
                     autoFocus
                     className="w-[75%] px-2 bg-transparent text-white outline-none"
                     value={item.editValue}
-                    onChange={(e) => {
-                      const newItems = [...items];
-                      newItems[index].editValue = e.target.value;
-                      setItem(newItems);
-                    }}
+                    onChange={(e) => handleEditValue(index, e.target.value)}
                   />
-                  <button className="w-[25%] bg-violet-700 text-white">
+                  <button
+                    className="w-[25%] bg-violet-700 text-white"
+                    onClick={() => handleEditSuccess(index)}
+                  >
                     Update
                   </button>
                 </form>
               )}
             </div>
+            {item.editError && (
+              <p className="text-red-400 text-sm mt-1">{item.editError}</p>
+            )}
           </li>
         ))}
       </ul>
@@ -151,7 +178,7 @@ const element = (
     </div>
   </div>
 );
-// React Dom
+
 const root = document.querySelector("#root");
 const container = ReactDOM.createRoot(root);
 container.render(element);
