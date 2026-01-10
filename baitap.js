@@ -15,6 +15,7 @@ const Input = () => {
 
   const handleClick = () => {
     const trimmedValue = value.trim();
+
     if (!trimmedValue) {
       setMes("Không được để trống");
       return;
