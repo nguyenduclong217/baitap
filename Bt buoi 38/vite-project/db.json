@@ -1,0 +1,216 @@
+{
+  "deals": [
+    {
+      "id": 1,
+      "category": "vegan",
+      "title": "Restaurant",
+      "location": "Chef Burgers London",
+      "image": "/img/Group 8.svg",
+      "offer": "-40%"
+    },
+    {
+      "id": 2,
+      "category": "vegan",
+      "title": "Restaurant",
+      "location": "Grand Ai Cafe London",
+      "image": "/img/Group 9.svg",
+      "offer": "-20%"
+    },
+    {
+      "id": 3,
+      "category": "vegan",
+      "title": "Restaurant",
+      "location": "Chef Burgers London",
+      "image": "/img/Group 8.svg",
+      "offer": "-17%"
+    },
+    {
+      "id": 1,
+      "category": "sushi",
+      "title": "Restaurant",
+      "location": "Chef Burgers London 2",
+      "image": "/img/Group 8.svg",
+      "offer": "-60%"
+    },
+    {
+      "id": 2,
+      "category": "sushi",
+      "title": "Restaurant",
+      "location": "Grand Ai Cafe London 2",
+      "image": "/img/Group 9.svg",
+      "offer": "-30%"
+    },
+    {
+      "id": 3,
+      "category": "sushi",
+      "title": "Restaurant",
+      "location": "Chef Burgers London 2",
+      "image": "/img/Group 8.svg",
+      "offer": "-27%"
+    },
+    {
+      "id": 1,
+      "category": "pizza",
+      "title": "Restaurant",
+      "location": "Chef Burgers London 3",
+      "image": "/img/Group 8.svg",
+      "offer": "-32%"
+    },
+    {
+      "id": 2,
+      "category": "pizza",
+      "title": "Restaurant",
+      "location": "Grand Ai Cafe London 3",
+      "image": "/img/Group 9.svg",
+      "offer": "-34%"
+    },
+    {
+      "id": 3,
+      "category": "pizza",
+      "title": "Restaurant",
+      "location": "Chef Burgers London 3",
+      "image": "/img/Group 8.svg",
+      "offer": "-17%"
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "title": "Burgers & Fast food",
+      "location": "21 Restaurants",
+      "image": "/img/Rectangle 13.svg"
+    },
+    {
+      "id": 2,
+      "title": "Salads",
+      "location": "32 Restaurants",
+      "image": "/img/Rectangle 15.svg"
+    },
+    {
+      "id": 3,
+      "title": "Pasta & Casuals",
+      "location": "4 Restaurants",
+      "image": "/img/Rectangle 17.svg"
+    },
+    {
+      "id": 4,
+      "title": "Pizza",
+      "location": "32 Restaurants",
+      "image": "/img/Rectangle 19.svg"
+    },
+    {
+      "id": 5,
+      "title": "Breakfast",
+      "location": "4 Restaurants",
+      "image": "/img/Rectangle 21.svg"
+    },
+    {
+      "id": 6,
+      "title": "Soups",
+      "location": "32 Restaurants",
+      "image": "/img/Rectangle 23.svg"
+    }
+  ],
+  "restaurants": [
+    {
+      "id": 1,
+      "title": "McDonald’s London ",
+      "image": "/img/Rectangle 13 (6).svg"
+    },
+    {
+      "id": 2,
+      "title": "Papa Johns",
+      "image": "/img/Rectangle 13 (1).svg"
+    },
+    {
+      "id": 3,
+      "title": "KFC West London",
+      "image": "/img/Rectangle 13 (2).svg"
+    },
+    {
+      "id": 4,
+      "title": "Texas Chicken",
+      "image": "/img/Rectangle 13 (3).svg"
+    },
+    {
+      "id": 5,
+      "title": "Burger King",
+      "image": "/img/Rectangle 13 (4).svg"
+    },
+    {
+      "id": 6,
+      "title": "Shaurma 1",
+      "image": "/img/Rectangle 13 (5).svg"
+    }
+  ],
+  "hint": [
+    {
+      "id": 1,
+      "title": "How does Order.UK work?",
+      "type": "question"
+    },
+    {
+      "id": 2,
+      "title": "What payment methods are accepted?",
+      "type": "question"
+    },
+    {
+      "id": 3,
+      "title": "Can I track my order in real-time?",
+      "type": "question"
+    },
+    {
+      "id": 4,
+      "title": "Are there any special discounts or promotions available?",
+      "type": "question"
+    },
+    {
+      "id": 5,
+      "title": "Is Order.UK available in my area?",
+      "type": "question"
+    },
+    {
+      "id": 6,
+      "title": "Place an Order!",
+      "type": "tutorial",
+      "text": "Place order through our website or Mobile app",
+      "image": "/img/order-food 1.svg"
+    },
+    {
+      "id": 7,
+      "title": "Track Progress",
+      "type": "tutorial",
+      "text": "Your can track your order status with delivery time",
+      "image": "/img/food 1.svg"
+    },
+    {
+      "id": 8,
+      "title": "Get your Order!",
+      "type": "tutorial",
+      "text": "Receive your order at a lighting fast speed!",
+      "image": "/img/order 1.svg"
+    }
+  ],
+  "counter": [
+    {
+      "id": 1,
+      "title": "Registered Riders",
+      "number": "546+"
+    },
+    {
+      "id": 2,
+      "title": "Registered Riders",
+      "number": "789,900+"
+    },
+    {
+      "id": 3,
+      "title": "Restaurants Partnered",
+      "number": "690+"
+    },
+    {
+      "id": 4,
+      "title": "Food items",
+      "number": "17,457+"
+    }
+  ]
+}
